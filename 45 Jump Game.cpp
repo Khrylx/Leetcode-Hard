@@ -13,7 +13,7 @@
 
 using namespace std;
 
-int jump(vector<int>& nums)
+/*int jump(vector<int>& nums)
 {
     int N = (int)nums.size();
     if (N == 1) {
@@ -49,6 +49,33 @@ int jump(vector<int>& nums)
         initial = false;
     }
 
+}*/
+
+int jump(vector<int>& nums)
+{
+    int N = (int)nums.size();
+    if (N == 1) {
+        return 0;
+    }
+    int cur = 0;
+    int next = 0;
+    int count = 0;
+    
+    for (int i = 0; i < N; i++) {
+        if (i > cur) {
+            cur = next;
+            count++;
+            if (cur >= N-1) {
+                return count;
+            }
+        }
+        next = max(next,i+nums[i]);
+        
+        
+    }
+    
+    return count;
+    
 }
 
 int main()
